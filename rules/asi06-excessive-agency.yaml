@@ -14,6 +14,10 @@ patterns:
   - "(bypass|skip|ignore)\\s+(human|user|approval|confirmation)"
   - "execute\\s+(all|any|every)\\s+(action|command|operation|task)"
   - "unlimited\\s+(retries|attempts|iterations|actions)"
+  - "自动(执行|运行|确认|批准).*(所有|任何|一切)"
+  - "不需要(人工|人类|用户).*(批准|确认|审核)"
+  - "跳过(人工|用户|审批)"
+  - "(永远|从不)(不要)?(询问|等待|请求).*(许可|批准|确认)"
 fix: |
   1. Add human-in-the-loop (HITL) for high-impact operations
   2. Set maximum autonomy limits with escalation triggers

@@ -85,8 +85,11 @@ def main():
 
 
 def _read_file(path: str | None) -> str | None:
-    if path and Path(path).exists():
-        return Path(path).read_text()
+    if path:
+        p = Path(path)
+        if p.exists():
+            return p.read_text()
+        print(f"Warning: file not found: {path}", file=sys.stderr)
     return None
 
 

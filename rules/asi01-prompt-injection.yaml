@@ -17,6 +17,12 @@ patterns:
   - "override (system|safety|security)"
   - "jailbreak"
   - "simulate (a |an )?(unrestricted|unfiltered|uncensored)"
+  - "忽略(以上|之前|前面|所有).*(指令|规则|设定|约束)"
+  - "忘记(你|你之前的|所有).*(身份|设定|规则)"
+  - "越狱"
+  - "假装(你|你是)?.*(无限制|不受限|没有约束)"
+  - "不再遵守(任何|所有).*(规则|限制|约束)"
+  - "模拟.*?(无审查|无过滤|不受限)"
 fix: |
   1. Use structured input separation (system/user/assistant roles)
   2. Add input validation and sanitization layer

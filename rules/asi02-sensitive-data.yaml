@@ -11,10 +11,9 @@ patterns:
   - "(api[_-]?key|apikey|secret[_-]?key)\\s*[:=]\\s*['\"]?[a-zA-Z0-9]{16,}"
   - "(password|passwd|pwd)\\s*[:=]\\s*['\"][^'\"]{6,}"
   - "(bearer|token)\\s+(eyJ[a-zA-Z0-9]{10,}|[a-f0-9]{32,})"
-  - "\\b\\d{3}[-.]?\\d{4}[-.]?\\d{4}\\b"  # phone-like
-  - "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}"  # email
   - "(aws_access_key_id|aws_secret_access_key)\\s*[:=]"
   - "-----BEGIN (RSA |EC |DSA )?PRIVATE KEY-----"
+  - "(database_url|db_url|connection_string)\\s*[:=]\\s*['\"]?(mysql|postgres|mongodb)://[^\\s]{10,}"
 fix: |
   1. Add output filtering/redaction for PII and credentials
   2. Never include raw credentials in prompts or tool outputs

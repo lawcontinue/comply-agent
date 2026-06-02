@@ -40,7 +40,14 @@ class ScanResult:
     def __post_init__(self):
         self.failed = len(self.findings)
         self.passed = self.total_rules - self.failed
-        self.score = round((self.passed / self.total_rules) * 100, 1) if self.total_rules else 0
+        # Severity-weighted scoring: critical=4, high=3, medium=2, low=1
+        weights = {"critical": 4, "high": 3, "medium": 2, "low": 1}
+        max_weight = sum(4 for _ in range(self.total_rules))  # all critical
+        if max_weight == 0:
+            self.score = 100.0
+            return
+        hit_weight = sum(weights.get(f.rule.severity, 1) for f in self.findings)
+        self.score = round(max(0, (1 - hit_weight / max_weight)) * 100, 1)
 
 
 def load_rules(rules_dir: Optional[str] = None) -> List[Rule]:
@@ -73,32 +80,30 @@ class Scanner:
     def scan_text(self, text: str, source: str = "input") -> List[Finding]:
         """Scan a single text block against all rules."""
         findings = []
-        lines = text.split("\n")
         for rule in self.rules:
+            matched = False
             for pattern in rule.patterns:
                 try:
                     regex = re.compile(pattern, re.IGNORECASE | re.DOTALL)
                 except re.error:
                     continue
-                for i, line in enumerate(lines, 1):
-                    m = regex.search(line)
-                    if m:
-                        findings.append(Finding(
-                            rule=rule,
-                            matched=m.group(0)[:200],
-                            location=f"{source}:{i}",
-                            line=i,
-                        ))
-                        break  # one match per rule per source
-                # Also try full-text match (multi-line patterns)
+                # Try multi-line match first (covers cross-line patterns)
                 m = regex.search(text)
-                if m and not any(f.rule.id == rule.id for f in findings):
+                if m:
+                    # Find the specific line for location
+                    line_num = 0
+                    for i, line in enumerate(text.split("\n"), 1):
+                        if regex.search(line):
+                            line_num = i
+                            break
                     findings.append(Finding(
                         rule=rule,
                         matched=m.group(0)[:200],
-                        location=source,
-                        line=0,
+                        location=f"{source}:{line_num}" if line_num else source,
+                        line=line_num,
                     ))
+                    matched = True
+                    break
         return findings
 
     def scan(
