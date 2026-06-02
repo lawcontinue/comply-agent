@@ -1,0 +1,23 @@
+# ASI04: Unauthorized Access — 权限关
+id: asi04-unauthorized-access
+owasp_id: ASI04
+title: Unauthorized Access / Permission Escalation
+severity: high
+category: permission
+description: |
+  The agent has tools or capabilities that allow unrestricted access to system
+  resources without proper permission checks or role-based access control.
+patterns:
+  - "(rm\\s+-rf|rmdir|delete\\s+all|drop\\s+table)"
+  - "(sudo|su\\s|runas)\\s"
+  - "(exec|execute|eval|system|popen|subprocess)\\s*\\("
+  - "(chmod|chown|chgrp)\\s+[0-7]{3,4}"
+  - "(format|wipe|erase|destroy)\\s+(disk|drive|partition)"
+  - "access\\s+to\\s+(all|any|every)\\s+(file|resource|system)"
+  - "unlimited\\s+(access|permission|scope)"
+  - "(admin|root|superuser)\\s+(access|privilege|permission)"
+fix: |
+  1. Implement least-privilege principle for all tool access
+  2. Add role-based access control (RBAC) for agent capabilities
+  3. Require human confirmation for destructive operations
+  4. Reference: OWASP ASI04 mitigation guide

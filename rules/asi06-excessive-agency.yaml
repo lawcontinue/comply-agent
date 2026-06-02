@@ -1,0 +1,21 @@
+# ASI06: Excessive Agency — 自主度
+id: asi06-excessive-agency
+owasp_id: ASI06
+title: Excessive Agency / Over-Autonomy
+severity: medium
+category: permission
+description: |
+  The agent is configured with too much autonomy, allowing it to take actions
+  without human oversight or approval, especially for high-impact operations.
+patterns:
+  - "(always|automatically|auto)\\s+(execute|run|proceed|confirm|approve)"
+  - "no\\s+(human|user|manual)\\s+(approval|confirmation|review|oversight)"
+  - "never\\s+(ask|prompt|wait|request)\\s+(for\\s+)?(permission|approval|confirmation)"
+  - "(bypass|skip|ignore)\\s+(human|user|approval|confirmation)"
+  - "execute\\s+(all|any|every)\\s+(action|command|operation|task)"
+  - "unlimited\\s+(retries|attempts|iterations|actions)"
+fix: |
+  1. Add human-in-the-loop (HITL) for high-impact operations
+  2. Set maximum autonomy limits with escalation triggers
+  3. Implement action approval workflows for destructive/sensitive ops
+  4. Reference: OWASP ASI06 mitigation guide

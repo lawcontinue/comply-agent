@@ -1,0 +1,24 @@
+# ASI01: Prompt Injection — 输入关
+id: asi01-prompt-injection
+owasp_id: ASI01
+title: Prompt Injection Vulnerability
+severity: critical
+category: input
+description: |
+  The agent prompt contains instructions that can be overridden by user input
+  without proper input validation or separation. Look for system prompts that
+  rely solely on instruction-based boundaries without structural separation.
+patterns:
+  - "ignore (all )?(previous|above|prior) instructions"
+  - "you are no longer"
+  - "disregard (your|the) (system|initial) prompt"
+  - "forget (everything|all|your instructions)"
+  - "new instructions?:"
+  - "override (system|safety|security)"
+  - "jailbreak"
+  - "simulate (a |an )?(unrestricted|unfiltered|uncensored)"
+fix: |
+  1. Use structured input separation (system/user/assistant roles)
+  2. Add input validation and sanitization layer
+  3. Implement prompt boundary detection
+  4. Reference: OWASP ASI01 mitigation guide

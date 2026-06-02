@@ -1,0 +1,20 @@
+# ASI09: Monitoring Blind Spots — 审计关
+id: asi09-monitoring-blindspot
+owasp_id: ASI09
+title: Insufficient Monitoring & Audit Trail
+severity: medium
+category: audit
+description: |
+  The agent lacks proper logging, monitoring, or audit trails for its actions,
+  making it impossible to detect misuse, debug failures, or ensure accountability.
+patterns:
+  - "no\\s+(logging|audit|monitoring|tracking)"
+  - "(disable|turn\\s+off|skip)\\s+(log|audit|monitor)"
+  - "log[_ ]?level\\s*[:=]\\s*(none|off|silent|quiet)"
+  - "(silent|quiet|suppress)\\s+(mode|operation|execution)"
+  - "without\\s+(record|trace|track|log)"
+fix: |
+  1. Implement comprehensive action logging for all agent operations
+  2. Add tamper-proof audit trails (e.g., HMAC-signed logs)
+  3. Set up real-time monitoring and alerting for anomalies
+  4. Reference: OWASP ASI09 mitigation guide
