@@ -1,0 +1,99 @@
+# 中国 AI 法规 → OWASP Agentic Top 10 映射
+
+china_ai_law:
+  name: "中国人工智能法律法规体系"
+  url: "https://www.yidianlaw.com/"
+  regulations:
+    - name: "《生成式人工智能服务管理暂行办法》"
+      effective: "2023-08-15"
+      issuer: "国家网信办等七部门"
+      articles:
+        - article: "第四条"
+          title: "内容合规"
+          description: "生成式AI内容应体现社会主义核心价值观，不得含有违法信息"
+          maps_to: ["ASI02", "ASI06"]
+          obligation: "建立内容审核机制，过滤违法有害信息"
+
+        - article: "第五条"
+          title: "训练数据合规"
+          description: "训练数据来源合法，不得含有侵犯知识产权的内容"
+          maps_to: ["ASI02"]
+          obligation: "数据来源合法性审查，知识产权保护"
+
+        - article: "第七条"
+          title: "用户信息保护"
+          description: "对用户的输入信息和使用记录不得非法收集、存储、使用"
+          maps_to: ["ASI02"]
+          obligation: "最小化数据收集，用户知情同意，数据脱敏处理"
+
+        - article: "第九条"
+          title: "标识要求"
+          description: "提供者应当对生成的图片、视频等进行标识"
+          maps_to: ["ASI02"]
+          obligation: "AI生成内容可识别标识"
+
+        - article: "第十二条"
+          title: "违法内容处置"
+          description: "发现违法内容应及时采取阻断等措施并报告"
+          maps_to: ["ASI06", "ASI09"]
+          obligation: "内容安全监测和快速响应机制"
+
+    - name: "《数据安全法》"
+      effective: "2021-09-01"
+      issuer: "全国人大常委会"
+      articles:
+        - article: "第二十七条"
+          title: "数据处理安全"
+          description: "开展数据处理活动应建立健全全流程安全管理制度"
+          maps_to: ["ASI04", "ASI09"]
+          obligation: "全流程数据安全管理，权限控制，审计日志"
+
+        - article: "第二十八条"
+          title: "数据风险处置"
+          description: "发现数据安全缺陷时应立即采取补救措施"
+          maps_to: ["ASI09"]
+          obligation: "安全事件发现和响应机制"
+
+        - article: "第三十条"
+          title: "风险评估"
+          description: "重要数据处理者应定期开展风险评估"
+          maps_to: ["ASI09"]
+          obligation: "定期安全风险评估和报告"
+
+    - name: "《个人信息保护法》(PIPL)"
+      effective: "2021-11-01"
+      issuer: "全国人大常委会"
+      articles:
+        - article: "第五条"
+          title: "最小必要原则"
+          description: "处理个人信息应遵循最小必要原则，不得过度收集"
+          maps_to: ["ASI02", "ASI04"]
+          obligation: "最小权限原则，数据最小化收集"
+
+        - article: "第二十四条"
+          title: "自动化决策"
+          description: "通过自动化决策方式向个人推送信息应提供不针对其个人特征的选项"
+          maps_to: ["ASI06"]
+          obligation: "算法推荐透明性，用户可选择退出"
+
+        - article: "第五十五条"
+          title: "安全影响评估"
+          description: "处理敏感个人信息、自动化决策等情形应事前进行影响评估"
+          maps_to: ["ASI01", "ASI06"]
+          obligation: "AI系统部署前进行数据保护影响评估(DPIA)"
+
+    - name: "《互联网信息服务算法推荐管理规定》"
+      effective: "2022-03-01"
+      issuer: "国家网信办等四部门"
+      articles:
+        - article: "第九条"
+          title: "算法透明"
+          description: "算法推荐服务提供者应当向用户提供算法推荐原理和机制说明"
+          maps_to: ["ASI02", "ASI09"]
+          obligation: "算法透明度义务，可解释性"
+
+        - article: "第十二条"
+          title: "用户选择权"
+          description: "用户可选择关闭算法推荐功能或删除用户标签"
+          maps_to: ["ASI06"]
+          obligation: "用户控制权，退出机制"

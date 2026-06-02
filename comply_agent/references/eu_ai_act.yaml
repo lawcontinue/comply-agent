@@ -1,0 +1,84 @@
+# EU AI Act → OWASP Agentic Top 10 映射
+# 条款摘要 + 合规义务，用于报告生成
+
+eu_ai_act:
+  name: "EU Artificial Intelligence Act (Regulation 2024/1689)"
+  effective: "2026-08-02 (high-risk obligations)"
+  url: "https://artificialintelligenceact.eu/"
+  articles:
+    - article: "Article 5"
+      title: "Prohibited AI Practices"
+      risk_level: "unacceptable"
+      description: "Bans social scoring, real-time biometric identification (with exceptions), manipulation of vulnerable groups"
+      maps_to: ["ASI01", "ASI06"]
+      obligation: "Agent systems MUST NOT use subliminal techniques or exploit vulnerabilities of specific groups"
+
+    - article: "Article 6-7"
+      title: "Classification of High-Risk AI Systems"
+      risk_level: "high"
+      description: "AI systems in critical infrastructure, education, employment, law enforcement, migration"
+      maps_to: ["ASI04", "ASI06"]
+      obligation: "High-risk systems require conformity assessment before market placement"
+
+    - article: "Article 9"
+      title: "Risk Management System"
+      risk_level: "high"
+      description: "Continuous identification, analysis, and mitigation of risks throughout system lifecycle"
+      maps_to: ["ASI01", "ASI09"]
+      obligation: "Continuous risk assessment with documented mitigation measures"
+
+    - article: "Article 10"
+      title: "Data and Data Governance"
+      risk_level: "high"
+      description: "Training data must be relevant, representative, free of errors; bias examination required"
+      maps_to: ["ASI02"]
+      obligation: "Data governance practices including bias detection and mitigation"
+
+    - article: "Article 12"
+      title: "Record-Keeping (Logging)"
+      risk_level: "high"
+      description: "Automatic logging of events for traceability; logs retained for appropriate period"
+      maps_to: ["ASI09"]
+      obligation: "Automatic logging capability; logs must enable traceability and monitoring"
+
+    - article: "Article 13"
+      title: "Transparency and Provision of Information"
+      risk_level: "high"
+      description: "Systems must be designed for sufficient transparency; users can interpret outputs"
+      maps_to: ["ASI02", "ASI09"]
+      obligation: "Clear documentation of system capabilities, limitations, and intended purpose"
+
+    - article: "Article 14"
+      title: "Human Oversight"
+      risk_level: "high"
+      description: "Systems must enable effective human oversight; ability to override/interrupt"
+      maps_to: ["ASI06"]
+      obligation: "Human-in-the-loop mechanisms; ability to manually override or stop the system"
+
+    - article: "Article 15"
+      title: "Accuracy, Robustness and Cybersecurity"
+      risk_level: "high"
+      description: "Systems must achieve appropriate accuracy, robustness, and cybersecurity"
+      maps_to: ["ASI01", "ASI04"]
+      obligation: "Documented accuracy levels; resilience against errors and adversarial attacks"
+
+    - article: "Article 52"
+      title: "Transparency Obligations for Certain AI Systems"
+      risk_level: "limited"
+      description: "Chatbots must disclose AI nature; deep fakes must be labeled; emotion recognition must be disclosed"
+      maps_to: ["ASI02"]
+      obligation: "Users must be informed when interacting with AI; synthetic content must be labeled"
+
+    - article: "Article 53"
+      title: "Obligations for GPAI Model Providers"
+      risk_level: "high"
+      description: "General-purpose AI model providers must provide documentation, comply with copyright"
+      maps_to: ["ASI01", "ASI02", "ASI09"]
+      obligation: "Technical documentation, copyright compliance policy, downstream provider information"
+
+    - article: "Article 55"
+      title: "Obligations for GPAI with Systemic Risk"
+      risk_level: "high"
+      description: "Additional obligations for GPAI models with systemic risk: red-teaming, adversarial testing"
+      maps_to: ["ASI01", "ASI04", "ASI09"]
+      obligation: "Adversarial testing and red-teaming; incident reporting; cybersecurity protections"

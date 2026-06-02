@@ -1,0 +1,59 @@
+# ISO/IEC 42001:2023 → OWASP Agentic Top 10 映射
+
+iso_42001:
+  name: "ISO/IEC 42001:2023 — AI Management System"
+  url: "https://www.iso.org/standard/81230.html"
+  controls:
+    - clause: "A.5.2 AI Policy"
+      title: "AI方针"
+      description: "组织应建立、实施和维护AI方针"
+      maps_to: ["ASI06", "ASI09"]
+      obligation: "制定AI使用方针和治理框架"
+
+    - clause: "A.6.1 AI Risk Assessment"
+      title: "AI风险评估"
+      description: "系统性地识别和评估AI系统风险"
+      maps_to: ["ASI01", "ASI04", "ASI09"]
+      obligation: "风险评估流程，包括威胁建模和影响分析"
+
+    - clause: "A.6.2 AI Risk Treatment"
+      title: "AI风险处置"
+      description: "针对评估的风险制定处置计划"
+      maps_to: ["ASI01", "ASI04", "ASI06"]
+      obligation: "风险处置计划，包括缓解、转移、接受或规避策略"
+
+    - clause: "A.7.1 AI System Development"
+      title: "AI系统开发"
+      description: "AI系统开发应遵循负责任AI原则"
+      maps_to: ["ASI01", "ASI02"]
+      obligation: "开发流程内置安全测试，数据治理，偏差检测"
+
+    - clause: "A.7.2 AI System Deployment"
+      title: "AI系统部署"
+      description: "部署前验证，包括测试和监控计划"
+      maps_to: ["ASI06", "ASI09"]
+      obligation: "部署前验证测试，上线后监控机制"
+
+    - clause: "A.7.3 AI System Operation"
+      title: "AI系统运行"
+      description: "持续监控AI系统性能和安全"
+      maps_to: ["ASI09"]
+      obligation: "持续监控，异常检测，事件响应流程"
+
+    - clause: "A.8.1 Data for AI Systems"
+      title: "AI系统数据管理"
+      description: "数据质量、来源、隐私保护"
+      maps_to: ["ASI02"]
+      obligation: "数据治理框架，质量保证，隐私保护"
+
+    - clause: "A.9.1 Transparency"
+      title: "透明性"
+      description: "向利益相关方提供AI系统相关信息"
+      maps_to: ["ASI02", "ASI09"]
+      obligation: "透明度报告，用户通知，文档化"
+
+    - clause: "A.10.1 Human Oversight"
+      title: "人工监督"
+      description: "确保人类可以有效监督AI系统"
+      maps_to: ["ASI06"]
+      obligation: "HITL机制，人工干预能力，责任分配"

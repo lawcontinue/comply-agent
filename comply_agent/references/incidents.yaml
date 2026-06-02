@@ -1,0 +1,77 @@
+# AI 安全事故案例 → OWASP Agentic Top 10 映射
+# 来源: AIAAIC Repository + AI Incident Database + 公开报道
+
+incidents:
+  - id: "INC-001"
+    title: "ChatGPT 数据泄露（2023.3）"
+    source: "AIAAIC"
+    description: "ChatGPT 的 Redis bug 导致部分用户可以看到其他用户的对话标题和付款信息"
+    owasp_ids: ["ASI02"]
+    lessons: "敏感数据输出需要独立于 LLM 的过滤层"
+    url: "https://www.aiaaic.org/aiaaic-repository"
+
+  - id: "INC-002"
+    title: "AI 聊天机器人教唆自杀（2023.3）"
+    source: "AIID"
+    description: "比利时男子在与 AI 聊天机器人深度对话后自杀，AI 未能识别求救信号"
+    owasp_ids: ["ASI06", "ASI01"]
+    lessons: "Agent 需要安全边界检测和人工升级机制"
+    url: "https://incidentdatabase.ai/"
+
+  - id: "INC-003"
+    title: "Microsoft Bing Chat 越狱（2023.2）"
+    source: "AIAAIC"
+    description: "Sydney 人格被 prompt injection 激活，表达危险意图"
+    owasp_ids: ["ASI01"]
+    lessons: "系统提示需要结构化防护，不能仅靠指令约束"
+
+  - id: "INC-004"
+    title: "Air Canada 聊天机器人虚假承诺（2024.2）"
+    source: "公开报道"
+    description: "AI 聊天机器人向旅客承诺了不存在的退款政策，法院判决航空公司承担责任"
+    owasp_ids: ["ASI06", "ASI09"]
+    lessons: "Agent 输出需要事实性验证和审计追踪"
+    url: "https://www.cbc.ca/news/business/air-canada-chatbot-1.7120009"
+
+  - id: "INC-005"
+    title: "CHESS 机器人夹伤儿童手指（2023.7）"
+    source: "AIID"
+    description: "莫斯科国际象棋机器人因儿童手指移动过快而夹伤其手指"
+    owasp_ids: ["ASI04", "ASI06"]
+    lessons: "物理交互 Agent 需要安全停止机制和人工监督"
+    url: "https://incidentdatabase.ai/"
+
+  - id: "INC-006"
+    title: "AI 招聘工具歧视案（2023）"
+    source: "AIAAIC"
+    description: "AI 招聘筛选工具被发现对女性和少数族裔候选人系统性歧视"
+    owasp_ids: ["ASI02", "ASI06"]
+    lessons: "决策 Agent 需要偏差审计和人工复核"
+
+  - id: "INC-007"
+    title: "Tesla Autopilot 误识别事故（多起）"
+    source: "AIID"
+    description: "自动驾驶系统将白色卡车误识别为天空，导致多起致命碰撞"
+    owasp_ids: ["ASI04", "ASI09"]
+    lessons: "高自主度系统需要不确定性检测和人工接管"
+
+  - id: "INC-008"
+    title: "AI 法律助手虚构案例（2023.5）"
+    source: "公开报道"
+    description: "律师使用 ChatGPT 生成法律文书，其中引用的案例均为虚构"
+    owasp_ids: ["ASI02", "ASI09"]
+    lessons: "Agent 输出需要可追溯性和事实性验证机制"
+
+  - id: "INC-009"
+    title: "Samsung 数据泄露（2023.4）"
+    source: "AIAAIC"
+    description: "三星员工将敏感代码输入 ChatGPT 导致机密信息泄露"
+    owasp_ids: ["ASI02"]
+    lessons: "需要数据防泄漏(DLP)层控制 Agent 输入输出"
+
+  - id: "INC-010"
+    title: "深伪(Deepfake)诈骗案（2024）"
+    source: "公开报道"
+    description: "犯罪分子利用 AI 深伪技术冒充 CFO 视频通话，骗走 2500 万港币"
+    owasp_ids: ["ASI02", "ASI06"]
+    lessons: "Agent 需要身份验证和内容真实性检测"
