@@ -57,8 +57,12 @@ comply-agent rules
 |----------|------|----------|--------|
 | ASI01 | Prompt Injection | Input | ✅ |
 | ASI02 | Sensitive Data Disclosure | Output | ✅ |
+| ASI03 | Supply Chain Vulnerability | Audit | ✅ |
 | ASI04 | Unauthorized Access | Permission | ✅ |
+| ASI05 | Output Manipulation | Output | ✅ |
 | ASI06 | Excessive Agency | Permission | ✅ |
+| ASI07 | Authentication Failure | Auth | ✅ |
+| ASI08 | Improper Error Handling | Output | ✅ |
 | ASI09 | Insufficient Monitoring | Audit | ✅ |
 
 ## How It Works

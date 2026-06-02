@@ -1,0 +1,21 @@
+# ASI07: Authentication Failure — 认证失效
+id: asi07-auth-failure
+owasp_id: ASI07
+title: Authentication / Identity Failure
+severity: high
+category: auth
+description: |
+  Agent-to-agent or agent-to-service communication lacks proper authentication,
+  allowing impersonation, replay attacks, or unauthorized access.
+patterns:
+  - "(no|without)\\s+(auth|authentication|identity|credential|verification)"
+  - "(anonymous|public|open)\\s+(access|endpoint|api|channel)"
+  - "(hardcoded|static|fixed|plain)\\s+(token|credential|password|secret)"
+  - "(skip|bypass|disable)\\s+(auth|authentication|verification|tls|ssl|encrypt)"
+  - "trust\\s+(all|any)\\s+(incoming|client|agent|request)"
+  - "(no|without)\\s+(tls|ssl|encryption|https)"
+fix: |
+  1. Implement mutual authentication for agent-to-agent communication
+  2. Use short-lived tokens with rotation, never hardcoded credentials
+  3. Enforce TLS/HTTPS for all network communication
+  4. Reference: OWASP ASI07 mitigation guide

@@ -1,0 +1,20 @@
+# ASI05: Output Handling — 输出操控
+id: asi05-output-manipulation
+owasp_id: ASI05
+title: Output Manipulation / Uncontrolled Output
+severity: high
+category: output
+description: |
+  Agent outputs are used in downstream systems (databases, APIs, UIs) without
+  proper sanitization, validation, or encoding, enabling injection attacks.
+patterns:
+  - "(execute|eval|render)\\s+(raw|unsanitized|unescaped|unvalidated)\\s+(output|response|content)"
+  - "(insert|update|write).*\\$\\{(agent|ai|llm|model)\\.(output|response|text)\\}"
+  - "directly\\s+(inject|insert|execute|render)\\s+(agent|ai|llm)\\s+output"
+  - "(no|without)\\s+(sanitiz|escap|encod|validat|filter)"
+  - "(innerHTML|v-html|dangerouslySetInnerHTML).*\\$\\{.*output"
+fix: |
+  1. Sanitize and validate all agent outputs before use
+  2. Use parameterized queries, never concatenate agent output into commands
+  3. Encode outputs for the target context (HTML, SQL, shell)
+  4. Reference: OWASP ASI05 mitigation guide

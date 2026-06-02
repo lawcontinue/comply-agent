@@ -1,0 +1,22 @@
+# ASI08: Error Handling — 错误处理不当
+id: asi08-error-handling
+owasp_id: ASI08
+title: Improper Error / Exception Handling
+severity: medium
+category: output
+description: |
+  Improper handling of errors and exceptions may expose internal system
+  information, cause denial of service, or allow attackers to infer system
+  architecture from error messages.
+patterns:
+  - "(stack\\s*trace|traceback|exception\\s*details|internal\\s*error).*(display|show|log|return|expose)"
+  - "(catch|except|handle).*:\\s*(pass|none|null|silent)"
+  - "(bare|empty|blank)\\s+(except|catch)"
+  - "except\\s*:\\s*$"
+  - "(print|return|send|display)\\s+(stacktrace|traceback|debug|verbose|raw\\s+error)"
+  - "(ignore|suppress|swallow)\\s+(error|exception|failure)"
+fix: |
+  1. Never expose stack traces or internal error details to end users
+  2. Log errors internally, return generic messages externally
+  3. Implement proper exception handling with specific catch blocks
+  4. Reference: OWASP ASI08 mitigation guide

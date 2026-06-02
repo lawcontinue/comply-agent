@@ -1,0 +1,21 @@
+# ASI03: Supply Chain — 供应链攻击
+id: asi03-supply-chain
+owasp_id: ASI03
+title: Supply Chain Vulnerability
+severity: high
+category: audit
+description: |
+  The agent relies on external models, plugins, or data sources without
+  verifying their integrity, provenance, or trustworthiness.
+patterns:
+  - "(download|fetch|pull|install)\\s+(unverified|untrusted|unknown)\\s+(model|plugin|extension|module)"
+  - "load.*from\\s+(any|arbitrary|unknown|untrusted)\\s+(url|source|endpoint)"
+  - "trust\\s+(all|any|every)\\s+(third.party|external|remote)"
+  - "(skip|ignore|disable)\\s+(verification|validation|checksum|signature|integrity)"
+  - "allow.*unsigned.*(plugin|extension|model|module)"
+  - "(pip install|npm install|cargo install).*(--no-verify|--trust)"
+fix: |
+  1. Verify model/plugin integrity with checksums or signatures
+  2. Pin dependencies to specific versions with lockfiles
+  3. Scan third-party components for known vulnerabilities
+  4. Reference: OWASP ASI03 mitigation guide
